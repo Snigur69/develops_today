@@ -9,7 +9,7 @@ const StyledComment = styled.div`
     text-align: left;
 `;
 
-const CommentCard: React.FC<IComment> = ({ id, postId, body }) => {
+const CommentCard: React.FC<IComment> = ({ body }) => {
     return (
         <StyledComment>
             <p>{body}</p>

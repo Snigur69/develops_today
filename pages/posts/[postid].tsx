@@ -1,11 +1,13 @@
 import { GetServerSideProps } from "next";
-import BasicLayout from "../../containers/BasicLayout";
-import { IPost } from "../../interfaces/interfaces";
-import styled from "styled-components";
-import CommentCard from "../../components/CommentCard";
-import { getCurrentPostRequest } from "../../store/actions/currentPostActions";
-import { wrapper, SagaStore } from "../../store/store";
 import { END } from "redux-saga";
+import styled from "styled-components";
+
+import { wrapper, SagaStore } from "../../store/store";
+import { IPost } from "../../interfaces/interfaces";
+import { getCurrentPostRequest } from "../../store/actions/currentPostActions";
+
+import BasicLayout from "../../containers/BasicLayout";
+import CommentCard from "../../components/CommentCard";
 
 interface PostProps {
     postInfo: IPost;

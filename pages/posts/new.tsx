@@ -1,9 +1,10 @@
-import BasicLayout from "../../containers/BasicLayout";
+import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import { string, object } from "yup";
 import styled from "styled-components";
+
 import { addNewPost } from "../../store/actions/newPostActions";
-import { useDispatch } from "react-redux";
+import BasicLayout from "../../containers/BasicLayout";
 
 const StyledButton = styled.button`
     font-size: 16px;
@@ -28,11 +29,6 @@ const StyledTextarea = styled.textarea`
     width: 100%;
     margin: 15px 0 0 0;
     border-radius: 5px;
-    ${(props) =>
-        props.error &&
-        `
-border: 1px solid red;
-`}
     :disabled {
         background: #ececec;
         border: 1px solid gray;
@@ -48,11 +44,6 @@ const StyledInput = styled.input`
     width: 100%;
     margin: 15px 0 0 0;
     border-radius: 5px;
-    ${(props) =>
-        props.error &&
-        `
-border: 1px solid red;
-`}
     :disabled {
         background: #ececec;
         border: 1px solid gray;
@@ -78,7 +69,7 @@ const AddNewPost: React.FC = () => {
     const dispatch = useDispatch();
 
     return (
-        <BasicLayout title="Add new pPost">
+        <BasicLayout title="Add new Post">
             <h1>Add new Post!</h1>
             <Formik
                 initialValues={{
@@ -108,7 +99,6 @@ const AddNewPost: React.FC = () => {
                             <label htmlFor="title">Post Title:</label>
                             <StyledInput
                                 disabled={isSubmitting}
-                                error={errors.title}
                                 type="text"
                                 name="title"
                                 onChange={handleChange}
@@ -122,7 +112,6 @@ const AddNewPost: React.FC = () => {
                             <label htmlFor="body">Post Body:</label>
                             <StyledTextarea
                                 disabled={isSubmitting}
-                                error={errors.body}
                                 name="body"
                                 onChange={handleChange}
                                 onBlur={handleBlur}

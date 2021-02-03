@@ -1,13 +1,13 @@
-import BasicLayout from "../containers/BasicLayout";
 import { GetServerSideProps } from "next";
 import styled from "styled-components";
+import { END } from "redux-saga";
 
-import PostCard from "../components/PostCard";
+import { wrapper, SagaStore } from "../store/store";
 import { IPost } from "../interfaces/interfaces";
 import { getPostsRequest } from "../store/actions/postsActions";
 
-import { wrapper, SagaStore } from "../store/store";
-import { END } from "redux-saga";
+import BasicLayout from "../containers/BasicLayout";
+import PostCard from "../components/PostCard";
 
 interface HomeProps {
     posts: IPost[];
@@ -20,7 +20,7 @@ const StyledPostsWrap = styled.div`
     margin: 30px auto;
 `;
 
-const Home: React.FC<HomeProps> = ({ posts = [] }) => {
+const Home: React.FC<HomeProps> = ({ posts }) => {
     return (
         <BasicLayout title="Home">
             <h1>Latest Posts!</h1>
